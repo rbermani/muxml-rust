@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0">
+  <work>
+    <work-title>Eine kleine Nachtmusik</work-title>
+  </work>
+  <identification>
+    <creator type="composer">
+      Mozart
+    </creator>
+    <encoding>
+      <software>muxml rust crate</software>
+      <encoding-date>08/22/1983</encoding-date>
+      <supports element="accidental" type="yes"/>
+      <supports element="beam" type="yes"/>
+    </encoding>
+  </identification>
+  <part-list/>
+</score-partwise>
