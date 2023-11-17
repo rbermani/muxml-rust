@@ -35,7 +35,7 @@ This crate is available on [crates.io](https://crates.io/crates/muxml). To use i
 
 ```toml
 [dependencies]
-muxml = "0.1.1"
+muxml = "0.1.2"
 ```
 
 ## Usage

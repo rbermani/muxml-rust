@@ -240,27 +240,50 @@ pub struct GraceElement {
 #[serde(rename_all = "kebab-case")]
 pub struct NoteElement {
     #[serde(skip_serializing_if = "Option::is_none")]
-    chord: Option<ChordElement>,
+    pub chord: Option<ChordElement>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    grace: Option<GraceElement>,
+    pub grace: Option<GraceElement>,
     #[serde(rename = "$value")]
-    pitch_or_rest: PitchRest,
+    pub pitch_or_rest: PitchRest,
     #[serde(skip_serializing_if = "Option::is_none")]
-    duration: Option<String>,
-    voice: String,
+    pub duration: Option<String>,
+    pub voice: String,
     #[serde(rename = "type")]
-    r#type: String,
+    pub r#type: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    stem: Option<String>,
+    pub stem: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    dot: Option<DotElement>,
+    pub dot: Option<DotElement>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    time_modification: Option<TimeModificationElement>,
-    staff: String,
+    pub time_modification: Option<TimeModificationElement>,
+    pub staff: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    beam: Option<Vec<BeamElement>>,
+    pub beam: Option<Vec<BeamElement>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    notations: Option<NotationsElement>,
+    pub notations: Option<NotationsElement>,
+}
+
+impl NoteElement {
+    pub fn insert_stop_tuple(&mut self, tuplet_number: String) {
+        if self.notations.is_some() {
+            let ne = self.notations.as_mut().unwrap();
+            ne.notations.push(Notations::Tuplet(TupletElement {
+                r#type: TupletType::Stop,
+                number: tuplet_number,
+            }));
+        } else {
+            self.notations = Some(NotationsElement {
+                notations: vec![Notations::Tuplet(TupletElement {
+                    r#type: TupletType::Stop,
+                    number: tuplet_number,
+                })],
+            });
+        }
+    }
+
+    pub fn clear_time_mods(&mut self) {
+        self.time_modification = None;
+    }
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]

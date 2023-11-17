@@ -2,8 +2,8 @@ use crate::muxml_types::{Part, PartListElement, ScorePart, Measure};
 use crate::error::{Error, Result};
 
 pub struct CompleteParts {
-    part_list: PartListElement,
-    part_elements: Vec<Part>,
+    pub part_list: PartListElement,
+    pub part_elements: Vec<Part>,
 }
 
 impl CompleteParts {
