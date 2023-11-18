@@ -29,7 +29,7 @@ impl CompleteParts {
             Err(Error::ItemNotFoundError(id.to_string()))
         }
     }
-    pub fn new_part(&mut self, id: &str, part_name: &str) -> Result<()> {
+    pub fn add_part(&mut self, id: &str, part_name: &str) -> Result<()> {
         // Check for duplicate id
         let found = self.part_list.score_part.iter().find(|&item| item.id == id);
         if let Some(_) = found {
@@ -40,6 +40,7 @@ impl CompleteParts {
                 id: id.to_string(),
                 part_name: part_name.to_string(),
             });
+            self.part_elements.push(Part {id: id.to_string(), measure: vec![]});
             Ok(())
         }
     }
