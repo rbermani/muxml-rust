@@ -22,6 +22,7 @@ The goal here is for the final deserialization implementation to use serde/quick
 - [ ] Implement comprehensive unit tests
 - [ ] Add support for unpitched note elements / percussion
 - [ ] Add support for various MusicXML elements
+- [ ] Validate deserialization input against the official MusicXML 4.0 schema definition (XSD)
 
 **Note: This project is in pre-Alpha state and subject to frequent & major breaking API changes.**
 
